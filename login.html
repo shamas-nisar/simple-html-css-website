@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Shamas</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" type="text/css" href="style.css" media="screen"/>
+  </head>
+  <body>
+    <div class="main">
+      <div class="top"></div>
+        <div class="navlist">
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="tables.html">Tables</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="frames.html">Frames</a></li>
+            <li><a href="signup.html">Signup</a></li>
+            <li><a href="login.html">Login</a></li>
+          </ul>
+        </div>
+        <div class="space"><br><br></div>
+        <div class="content">
+          <div class="Signin-Info"><h1>Login</h1></div>
+          <form name="myForm" onsubmit="return validateForm()" method="post">
+              <fieldset>
+                  <div class="form-control">
+                      <label>Email</label><br>
+                      <input type="text" id="email" name="email" placeholder="Username" /><br><br>
+                  </div>
+                  <div class="form-control">
+                      <label>Password</label><br>
+                      <input type="password" id="password" name="password" placeholder="Password" /><br><br>
+                  </div>
+                  <div class="form-control">
+                      <input type="Submit" id="aligned-password" placeholder="Submit" />
+                  </div>
+                  
+              </fieldset>
+          </form>
+          <a href="index.html" id="signin"></a>
+        </div>
+      </div>
+
+    </body>
+
+    <script type="text/javascript">
+      function callback() {
+        alert("Signin Successful")
+       var a = document.getElementById('signin');
+            window.location.href='index.html';
+    }
+
+     function validateForm() {
+            let email = document.forms["myForm"]["email"].value;
+            let password = document.forms["myForm"]["password"].value;
+            
+            let valid_form = false;
+            
+
+            //Check if email and password are filled
+            if (email == "" || password == "") {
+                alert("Some fields are empty. Please fill put all fields.");
+                return false;
+            }
+
+           if(! /(.+)@(.+){2,}\.(.+){2,}/.test(email)) {
+               alert("Invalid Email: Incorrect Email "+ email);
+                return false
+            }
+
+            callback();
+        }
+    </script>
+</html>

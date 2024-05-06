@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Shamas</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" type="text/css" href="style.css" media="screen"/>
+  </head>
+  <body>
+    <div class="main">
+      <div class="top"></div>
+        <div class="navlist">
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="tables.html">Tables</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="frames.html">Frames</a></li>
+            <li><a href="signup.html">Signup</a></li>
+            <li><a href="login.html">Login</a></li>
+          </ul>
+        </div>
+        <div class="space"><br><br></div>
+
+        <div class="content">
+            <div class="Signup-Info"><h1>Signup</h1></div>
+          <form name="myForm" onsubmit="return validateForm()" method="post">
+              <fieldset>
+                <div class="form-control">
+                      <label>Username</label><br>
+                      <input type="text" id="username" name="username" placeholder="Username" /><br><br>
+                  </div>
+                  <div class="form-control">
+                      <label>Email</label><br>
+                      <input type="text" id="email" name="email" placeholder="Username" /><br><br>
+                  </div>
+                  <div class="form-control">
+                      <label>Password</label><br>
+                      <input type="password" id="password" name="password" placeholder="Password" /><br><br>
+                  </div>
+                  <div class="form-control">
+                      <label>Confirm Password</label><br>
+                      <input type="password" id="c_password" name="c_password" placeholder="Password" /><br><br>
+                  </div>
+                  <div class="form-control">
+                      <input type="submit" id="aligned-password" placeholder="Submit" />
+                  </div>
+              </fieldset>
+          </form>
+      </div>
+
+    </body>
+
+    <script type="text/javascript">
+        function Redirect() {
+               window.location = "home.html";
+            }
+        function validateForm() {
+            let username = document.forms["myForm"]["username"].value;
+            let email = document.forms["myForm"]["email"].value;
+            let password = document.forms["myForm"]["password"].value;
+            let c_password = document.forms["myForm"]["c_password"].value;
+            let valid_form = false;
+            
+
+            //Check if email and password are filled
+            if (email == "" || password =="" || username=="") {
+                alert("Some fields are empty. Please fill put all fields.");
+                return false;
+            }
+
+            //Check if Username is letters only, Email is valid and passwords match
+            var letters = /^[A-Za-z]+$/;
+
+            if(username.match(letters))
+            {
+                if( /(.+)@(.+){2,}\.(.+){2,}/.test(email) ){
+                    //Check if passwords match
+                    if(password == c_password) {
+                        valid_form= true;  
+                    }
+                    else {
+                        alert("passwords do not match.");
+                    }
+                }
+                else {
+                    alert("Invalid Email: Incorrect Email "+ email);
+                }
+            }
+            else {
+                alert("username should be letters only");
+            }
+
+            if(valid_form) {
+                alert("Signup Successful")
+                Redirect()
+            }
+        }
+    </script>
+</html>
